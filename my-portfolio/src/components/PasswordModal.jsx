@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 import '../styles/PasswordModal.css';
 
 function PasswordModal({ isOpen, onClose, onSubmit }) {
@@ -63,4 +63,4 @@ function PasswordModal({ isOpen, onClose, onSubmit }) {
   );
 }
 
-export default PasswordModal;
+export default memo(PasswordModal);

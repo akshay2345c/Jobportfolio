@@ -20,7 +20,6 @@
   margin-bottom: 0;
 }
 
-
 .experience-card {
   background-color: var(--bg-color);
   border: 1px solid var(--border-color);
@@ -90,15 +89,9 @@
 }
 
 @media (max-width: 768px) {
-  .experience-timeline::before {
-    left: 0;
-  }
-
   .experience-item {
     gap: 1rem;
-    margin-left: 2rem;
   }
-
 
   .experience-card {
     width: 100%;
@@ -121,10 +114,6 @@
 }
 
 @media (max-width: 480px) {
-  .experience-item {
-    margin-left: 1.5rem;
-  }
-
   .experience-card {
     padding: 1rem;
   }

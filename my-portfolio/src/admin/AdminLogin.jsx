@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRoute } from '../context/DataContext';
 import PasswordModal from '../components/PasswordModal';
 import '../styles/AdminLogin.css';
@@ -6,10 +6,6 @@ import '../styles/AdminLogin.css';
 function AdminLogin() {
   const { navigate } = useRoute();
   const [showModal, setShowModal] = useState(true);
-
-  useEffect(() => {
-    setShowModal(true);
-  }, []);
 
   const handlePasswordSuccess = () => {
     setShowModal(false);

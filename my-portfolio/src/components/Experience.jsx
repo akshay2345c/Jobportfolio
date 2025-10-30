@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { useData } from '../context/DataContext';
 import '../styles/Experience.css';
 
@@ -14,9 +14,8 @@ function Experience() {
           My professional journey and work experience.
         </p>
         <div className="experience-timeline">
-          {experience.map((exp, index) => (
+          {experience.map((exp) => (
             <div key={exp.id} className="experience-item">
-              
               <div className="experience-card">
                 <div className="experience-header">
                   <h3 className="company-name">{exp.company}</h3>
@@ -36,4 +35,4 @@ function Experience() {
   );
 }
 
-export default Experience;
+export default memo(Experience);

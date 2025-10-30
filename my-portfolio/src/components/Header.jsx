@@ -1,13 +1,13 @@
-import React from 'react';
+import { memo, useCallback } from 'react';
 import { useRoute } from '../context/DataContext';
 import '../styles/Header.css';
 
 function Header() {
   const { navigate } = useRoute();
 
-  const handleAdminClick = () => {
+  const handleAdminClick = useCallback(() => {
     navigate('/admin-login');
-  };
+  }, [navigate]);
 
   return (
     <header className="header">
@@ -32,4 +32,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);

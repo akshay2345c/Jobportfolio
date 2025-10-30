@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo, useCallback } from 'react';
 import { useData, useRoute } from '../context/DataContext';
 import '../styles/Projects.css';
 
@@ -7,9 +7,9 @@ function Projects() {
   const { navigate } = useRoute();
   const { projects } = data;
 
-  const handleProjectClick = (projectId) => {
+  const handleProjectClick = useCallback((projectId) => {
     navigate(`/projects/${projectId}`);
-  };
+  }, [navigate]);
 
   return (
     <section className="projects" id="projects">
@@ -56,4 +56,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default memo(Projects);

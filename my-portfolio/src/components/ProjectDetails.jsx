@@ -1,4 +1,3 @@
-import React from 'react';
 import { useData, useRoute } from '../context/DataContext';
 import '../styles/ProjectDetails.css';
 

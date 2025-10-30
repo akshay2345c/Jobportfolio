@@ -1,134 +1,66 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { db } from '../firebaseConfig';
+import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 
 const DataContext = createContext();
 const RouteContext = createContext();
 
 const initialData = {
-  profile: {
-    name: 'Akshay Patel',
-    role: 'React JS Developer',
-    tagline: 'Building scalable, high-performance, and responsive web applications.',
-    email: 'akshay.patel@example.com',
-    phone: '+91 98765 43210',
-    location: 'Ahmedabad, Gujarat',
-  },
-  skills: [
-    { id: 1, name: 'React', level: 'Advanced' },
-    { id: 2, name: 'Redux', level: 'Advanced' },
-    { id: 3, name: 'JavaScript', level: 'Advanced' },
-    { id: 4, name: 'HTML5', level: 'Advanced' },
-    { id: 5, name: 'CSS3', level: 'Advanced' },
-    { id: 6, name: 'Git', level: 'Intermediate' },
-    { id: 7, name: 'REST APIs', level: 'Advanced' },
-    { id: 8, name: 'Responsive Design', level: 'Advanced' },
-  ],
-  projects: [
-    {
-      id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce platform built with React and Redux.',
-      image: 'https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=500&h=300&fit=crop',
-      liveLink: 'https://example.com/ecommerce',
-      startDate: 'Jan 2024',
-      endDate: 'Mar 2024',
-      fullDescription: 'Built a complete e-commerce platform with product listing, cart management, and checkout functionality. Implemented responsive design and optimized performance.',
-      gallery: [
-        'https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=800&h=600&fit=crop',
-      ],
-    },
-    {
-      id: 2,
-      title: 'Task Management App',
-      description: 'A React-based task management application with real-time updates.',
-      image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=300&fit=crop',
-      liveLink: 'https://example.com/tasks',
-      startDate: 'Apr 2024',
-      endDate: 'Jun 2024',
-      fullDescription: 'Developed a task management application with drag-and-drop functionality, real-time notifications, and local storage persistence.',
-      gallery: [
-        'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop',
-      ],
-    },
-    {
-      id: 3,
-      title: 'Portfolio Website',
-      description: 'A responsive personal portfolio showcasing projects and skills.',
-      image: 'https://images.unsplash.com/photo-1517694712a17-d7cc1f1d9e0d?w=500&h=300&fit=crop',
-      liveLink: 'https://example.com/portfolio',
-      startDate: 'Jul 2024',
-      endDate: 'Sep 2024',
-      fullDescription: 'Created a modern, fully responsive portfolio website with smooth scrolling, dynamic project filtering, and contact integration.',
-      gallery: [
-        'https://images.unsplash.com/photo-1517694712a17-d7cc1f1d9e0d?w=800&h=600&fit=crop',
-      ],
-    },
-  ],
-  experience: [
-    {
-      id: 1,
-      company: 'FABAF Pvt. Ltd.',
-      location: 'Ahmedabad',
-      role: 'Frontend Developer',
-      startDate: 'Feb 2025',
-      endDate: 'Present',
-      description: 'Created responsive UI components, tested for functional accuracy and smooth user experience. Collaborated with design and backend teams to deliver high-quality web applications.',
-    },
-    {
-      id: 2,
-      company: 'Tech Solutions Inc.',
-      location: 'Bangalore',
-      role: 'Junior React Developer',
-      startDate: 'Aug 2023',
-      endDate: 'Jan 2025',
-      description: 'Developed and maintained React components for multiple projects. Implemented state management using Redux and Context API. Participated in code reviews and team meetings.',
-    },
-  ],
-  education: [
-    {
-      id: 1,
-      institution: 'Bachelor of Technology',
-      field: 'Computer Science',
-      duration: '2019 - 2023',
-      percentage: '7.8 CGPA',
-      description: 'Graduated with honors. Focused on web development and software engineering.',
-    },
-    {
-      id: 2,
-      institution: 'React Complete Guide',
-      field: 'Online Certification',
-      duration: '2023',
-      percentage: 'Completed',
-      description: 'Comprehensive online course covering React fundamentals to advanced concepts.',
-    },
-    {
-      id: 3,
-      institution: 'JavaScript Mastery',
-      field: 'Online Certification',
-      duration: '2022 - 2023',
-      percentage: 'Completed',
-      description: 'In-depth JavaScript course covering ES6+, async programming, and design patterns.',
-    },
-  ],
+  profile: null,
+  skills: [],
+  projects: [],
+  experience: [],
+  education: [],
+  contact: null,
 };
 
 export function DataProvider({ children }) {
   const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const storedData = localStorage.getItem('portfolioData');
-    if (storedData) {
+    let isCancelled = false;
+    async function fetchFromFirestore() {
       try {
-        setData(JSON.parse(storedData));
-      } catch (error) {
-        console.error('Failed to parse stored data:', error);
-        setData(initialData);
+        const [projectsSnap, experienceSnap, educationSnap, skillsSnap] = await Promise.all([
+          getDocs(collection(db, 'projects')),
+          getDocs(collection(db, 'experience')),
+          getDocs(collection(db, 'education')),
+          getDocs(collection(db, 'skills')),
+        ]);
+
+        const projects = projectsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+        const experience = experienceSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+        const education = educationSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+        const skills = skillsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+        const [contactDoc, profileDoc] = await Promise.all([
+          getDoc(doc(db, 'contact', 'info')),
+          getDoc(doc(db, 'profile', 'main')),
+        ]);
+
+        const contact = contactDoc.exists() ? contactDoc.data() : null;
+        const profile = profileDoc.exists() ? profileDoc.data() : null;
+
+        if (!isCancelled) {
+          setData({ projects, experience, education, skills, contact, profile });
+          setLoading(false);
+        }
+      } catch (e) {
+        console.error('Failed to load Firestore data', e);
+        if (!isCancelled) {
+          setError('Failed to load data');
+          setData(initialData);
+          setLoading(false);
+        }
       }
     }
+    fetchFromFirestore();
+    return () => {
+      isCancelled = true;
+    };
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem('portfolioData', JSON.stringify(data));
-  }, [data]);
 
   const updateData = (newData) => {
     setData(newData);
@@ -137,7 +69,7 @@ export function DataProvider({ children }) {
   const updateProfile = (profileData) => {
     setData(prev => ({
       ...prev,
-      profile: { ...prev.profile, ...profileData }
+      profile: { ...(prev.profile || {}), ...profileData }
     }));
   };
 
@@ -156,13 +88,16 @@ export function DataProvider({ children }) {
   };
 
   const addProject = (project) => {
+    const nextId = Array.isArray(data.projects) && data.projects.length > 0
+      ? Math.max(...data.projects.map(p => Number(p.id) || 0), 0) + 1
+      : 1;
     const newProject = {
       ...project,
-      id: Math.max(...data.projects.map(p => p.id), 0) + 1
+      id: nextId,
     };
     setData(prev => ({
       ...prev,
-      projects: [...prev.projects, newProject]
+      projects: [...(prev.projects || []), newProject]
     }));
   };
 
@@ -182,6 +117,8 @@ export function DataProvider({ children }) {
 
   const value = {
     data,
+    loading,
+    error,
     updateData,
     updateProfile,
     updateSkills,

@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { useData } from '../context/DataContext';
 import '../styles/Skills.css';
 
@@ -26,4 +26,4 @@ function Skills() {
   );
 }
 
-export default Skills;
+export default memo(Skills);

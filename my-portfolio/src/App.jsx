@@ -1,14 +1,30 @@
+import { lazy, Suspense } from 'react';
+
 import { DataProvider, RouteProvider, useRoute } from './context/DataContext';
-import Home from './pages/Home';
-import ProjectDetails from './components/ProjectDetails';
+
 import AdminLogin from './admin/AdminLogin';
-import AdminDashboard from './admin/AdminDashboard';
+import Home from './pages/Home';
+
+const ProjectDetails = lazy(() => import('./components/ProjectDetails'));
+const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
+
+function LoadingFallback() {
+  return (
+    <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ color: 'var(--text-secondary)' }}>Loading...</div>
+    </section>
+  );
+}
 
 function AppContent() {
   const { route } = useRoute();
 
   if (route === '/projects/:id') {
-    return <ProjectDetails />;
+    return (
+      <Suspense fallback={<LoadingFallback />}>
+        <ProjectDetails />
+      </Suspense>
+    );
   }
 
   if (route === '/admin-login') {
@@ -16,7 +32,11 @@ function AppContent() {
   }
 
   if (route === '/admin-panel') {
-    return <AdminDashboard />;
+    return (
+      <Suspense fallback={<LoadingFallback />}>
+        <AdminDashboard />
+      </Suspense>
+    );
   }
 
   return <Home />;

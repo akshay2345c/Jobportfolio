@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useRoute } from '../context/DataContext';
-import AdminSkills from './AdminSkills';
-import AdminProjects from './AdminProjects';
-import AdminExperience from './AdminExperience';
 import AdminEducation from './AdminEducation';
+import AdminExperience from './AdminExperience';
+import AdminProjects from './AdminProjects';
+import AdminSkills from './AdminSkills';
 import '../styles/AdminDashboard.css';
 
 function AdminDashboard() {

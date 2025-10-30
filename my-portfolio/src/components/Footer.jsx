@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { useData } from '../context/DataContext';
 import '../styles/Footer.css';
 
@@ -55,4 +55,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default memo(Footer);

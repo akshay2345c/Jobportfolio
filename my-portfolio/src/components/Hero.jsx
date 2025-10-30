@@ -1,4 +1,3 @@
-import React from 'react';
 import { useData } from '../context/DataContext';
 import '../styles/Hero.css';
 
