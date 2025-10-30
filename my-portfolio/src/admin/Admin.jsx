@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useData } from '../context/DataContext';
+import { useData, useRoute } from '../context/DataContext';
 import '../styles/Admin.css';
 
 function Admin() {
-  const navigate = useNavigate();
   const { data, updateProfile } = useData();
+  const { navigate } = useRoute();
   const [activeTab, setActiveTab] = useState('profile');
   const [profileForm, setProfileForm] = useState(data.profile);
 

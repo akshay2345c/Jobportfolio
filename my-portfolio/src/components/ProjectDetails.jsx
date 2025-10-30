@@ -1,14 +1,12 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useData } from '../context/DataContext';
+import { useData, useRoute } from '../context/DataContext';
 import '../styles/ProjectDetails.css';
 
 function ProjectDetails() {
-  const { id } = useParams();
-  const navigate = useNavigate();
   const { data } = useData();
+  const { projectId, navigate } = useRoute();
 
-  const project = data.projects.find(p => p.id === parseInt(id));
+  const project = data.projects.find(p => p.id === projectId);
 
   if (!project) {
     return (

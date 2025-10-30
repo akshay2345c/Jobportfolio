@@ -1,12 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useData } from '../context/DataContext';
+import { useData, useRoute } from '../context/DataContext';
 import '../styles/Projects.css';
 
 function Projects() {
   const { data } = useData();
+  const { navigate } = useRoute();
   const { projects } = data;
-  const navigate = useNavigate();
 
   const handleProjectClick = (projectId) => {
     navigate(`/projects/${projectId}`);
