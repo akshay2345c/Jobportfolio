@@ -1,0 +1,95 @@
+.education {
+  background-color: var(--bg-color);
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.education-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.education-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px var(--shadow-color);
+}
+
+.institution-name {
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+  font-size: var(--font-size-large);
+}
+
+.field-name {
+  color: var(--accent-color);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-base);
+}
+
+.duration {
+  color: var(--text-secondary);
+  font-size: var(--font-size-small);
+  margin-bottom: 0.75rem;
+}
+
+.achievement {
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: var(--font-size-base);
+}
+
+.education-card .description {
+  color: var(--text-secondary);
+  font-size: var(--font-size-small);
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1;
+}
+
+@media (max-width: 1200px) {
+  .education-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .education-card {
+    padding: 1.5rem;
+  }
+
+  .section-subheading {
+    font-size: var(--font-size-base);
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .education-card {
+    padding: 1rem;
+  }
+
+  .institution-name {
+    font-size: var(--font-size-base);
+  }
+
+  .education-card .description {
+    font-size: var(--font-size-small);
+  }
+}
