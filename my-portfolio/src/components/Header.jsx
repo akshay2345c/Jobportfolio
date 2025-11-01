@@ -1,18 +1,21 @@
 import { memo, useState, useEffect } from 'react';
 import { useRoute } from '../context/DataContext';
-import { FaHome, FaCode, FaProjectDiagram, FaBriefcase, FaGraduationCap, FaFileAlt } from 'react-icons/fa';
+import { FaHome, FaCode, FaProjectDiagram, FaBriefcase, FaGraduationCap, FaFileAlt, FaBars, FaTimes } from 'react-icons/fa';
 import profileImage from '../assets/images/Akshay_photo.jpeg';
 import '../styles/Header.css';
+import { FaGithub } from 'react-icons/fa';
 
 function Header() {
   const { navigate, route } = useRoute();
-  const [sidebarExpanded, setSidebarExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [sidebarClickExpanded, setSidebarClickExpanded] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth > 768) {
+        setIsSidebarOpen(false);
+      }
     };
 
     window.addEventListener('resize', handleResize);
@@ -42,26 +45,20 @@ function Header() {
     } else {
       navigate(path);
     }
-    setSidebarExpanded(false);
-    setSidebarClickExpanded(false);
+    setIsSidebarOpen(false);
   };
-
-  const handleSidebarClick = () => {
-    setSidebarClickExpanded(!sidebarClickExpanded);
-  };
-
-  const handleSidebarMouseEnter = () => {
-    setSidebarExpanded(true);
-  };
-
-  const handleSidebarMouseLeave = () => {
-    setSidebarExpanded(false);
-  };
-
-  const isExpanded = sidebarExpanded || sidebarClickExpanded;
 
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsSidebarOpen(false);
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
   };
 
   const navItems = [
@@ -82,8 +79,17 @@ function Header() {
             <div className="header-content">
               <div className="logo-section" onClick={handleLogoClick} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && handleLogoClick()}>
                 <img src={profileImage} alt="Akshay Patel" className="profile-image" />
+                
               </div>
-
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              title="GitHub"
+            >
+              <FaGithub />
+            </a>
               <nav className="nav-menu desktop-nav">
                 {navItems.map((item) => {
                   const Icon = item.icon;
@@ -111,42 +117,77 @@ function Header() {
 
       {/* Vertical Sidebar (Mobile Only) */}
       {isMobile && (
-        <aside
-          className={`sidebar-nav ${isExpanded ? 'expanded' : 'collapsed'}`}
-          onMouseEnter={handleSidebarMouseEnter}
-          onMouseLeave={handleSidebarMouseLeave}
-          onClick={handleSidebarClick}
-        >
-          <div className="sidebar-logo" onClick={(e) => {
-            e.stopPropagation();
-            handleLogoClick();
-            setSidebarClickExpanded(false);
-          }} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && handleLogoClick()}>
-            <img src={profileImage} alt="Akshay Patel" className="sidebar-profile-image" />
-          </div>
+        <>
+          <header className="mobile-header">
+            <button
+              type="button"
+              className="mobile-menu-toggle"
+              onClick={toggleSidebar}
+              aria-label="Toggle navigation"
+              aria-expanded={isSidebarOpen}
+            >
+              {isSidebarOpen ? <FaTimes /> : <FaBars />}
+            </button>
+                         <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              title="GitHub"
+            >
+              <FaGithub />
+            </a>
+            <div
+              className="mobile-logo"
+              onClick={handleLogoClick}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleLogoClick()}
+            >
+              <img src={profileImage} alt="Akshay Patel" className="mobile-profile-image" />
+            </div>
+        
+          </header>
 
-          <nav className="sidebar-menu">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <a
-                  key={item.label}
-                  href={item.path}
-                  className="sidebar-link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    handleNavClick(item.path);
-                  }}
-                  title={item.label}
-                >
-                  <Icon className="sidebar-icon" />
-                  <span className="sidebar-text">{item.label}</span>
-                </a>
-              );
-            })}
-          </nav>
-        </aside>
+          <div
+            className={`sidebar-overlay ${isSidebarOpen ? 'visible' : ''}`}
+            onClick={closeSidebar}
+            role="presentation"
+          />
+
+          <aside className={`sidebar-nav mobile-sidebar ${isSidebarOpen ? 'open' : ''}`}>
+            <div
+              className="sidebar-logo"
+              onClick={handleLogoClick}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleLogoClick()}
+            >
+              <img src={profileImage} alt="Akshay Patel" className="sidebar-profile-image" />
+            </div>
+
+            <nav className="sidebar-menu">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.label}
+                    href={item.path}
+                    className="sidebar-link"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.path);
+                    }}
+                    title={item.label}
+                  >
+                    <Icon className="sidebar-icon" />
+                    <span className="sidebar-text">{item.label}</span>
+                  </a>
+                );
+              })}
+            </nav>
+          </aside>
+        </>
       )}
     </>
   );

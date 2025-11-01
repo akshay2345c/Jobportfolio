@@ -4,11 +4,7 @@
   transition: margin-left 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .resume-section {
-    margin-left: 60px;
-  }
-}
+
 
 .resume-container {
   max-width: 1200px;
@@ -52,7 +48,7 @@
 
 .resume-footer {
   display: flex;
-  justify-content: center;
+
 }
 
 @media (max-width: 768px) {

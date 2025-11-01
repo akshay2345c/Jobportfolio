@@ -16,7 +16,8 @@ function Footer() {
             I'm always open to new opportunities and interesting projects.
           </p>
 
-          <div className="contact-info">
+         <div className='footercontainers'>
+           <div className="contact-info">
             <div className="contact-item">
               <FaEnvelope className="contact-icon" />
               <a href={`mailto:${profile.email}`} className="contact-link">
@@ -35,35 +36,8 @@ function Footer() {
             </div>
           </div>
 
-          <div className="social-links">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="GitHub"
-            >
-              <FaGithub />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="LinkedIn"
-            >
-              <FaLinkedin />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="Twitter"
-            >
-              <FaTwitter />
-            </a>
-          </div>
+        
+         </div>
         </div>
 
         <div className="footer-bottom">

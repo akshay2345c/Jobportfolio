@@ -67,7 +67,7 @@
   border-radius: 20px;
   font-size: var(--font-size-small);
   font-weight: 500;
-  white-space: nowrap;
+  
 }
 
 .job-role {
@@ -83,9 +83,10 @@
 }
 
 .experience-card .description {
-  color: var(--text-secondary);
+  color: white;
   font-size: var(--font-size-base);
   line-height: 1.6;
+  text-align: justify;
 }
 
 @media (max-width: 768px) {
@@ -105,6 +106,9 @@
 
   .location-badge {
     align-self: flex-start;
+    background-color: transparent;
+    color: var(--text-secondary);
+    padding: 0;
   }
 
   .section-subheading {

@@ -45,21 +45,13 @@ function ProjectDetails() {
 
           <div className="project-description-section">
             <h2>About This Project</h2>
-            <p>{project.fullDescription}</p>
+            <p>{project.description}</p>
           </div>
 
-          {project.gallery && project.gallery.length > 0 && (
-            <div className="project-gallery">
-              <h2>Gallery</h2>
-              <div className="gallery-grid">
-                {project.gallery.map((image, index) => (
-                  <div key={index} className="gallery-item">
-                    <img src={image} alt={`${project.title} screenshot ${index + 1}`} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+           <div className="project-description-section">
+            <h2>what i Do</h2>
+            <p>{project.fullDescription}</p>
+          </div>
 
           <div className="project-links">
             <a

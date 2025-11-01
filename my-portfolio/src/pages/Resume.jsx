@@ -4,6 +4,9 @@ import Header from '../components/Header';
 import ScrollToTop from '../components/ScrollToTop';
 import resumePdf from '../assets/Akshay_resume (2).pdf';
 import '../styles/Resume.css';
+import { FaArrowLeftLong } from 'react-icons/fa6';
+import { FaDownload } from "react-icons/fa6";
+
 
 function Resume() {
   const { navigate } = useRoute();
@@ -26,7 +29,8 @@ function Resume() {
           <div className="resume-header">
             <h1>My Resume</h1>
             <button className="btn btn-primary download-btn" onClick={handleDownloadResume}>
-              ↓ Download Resume
+            <FaDownload />
+            Download Resume
             </button>
           </div>
 
@@ -40,7 +44,7 @@ function Resume() {
 
           <div className="resume-footer">
             <button className="btn btn-secondary" onClick={() => navigate('/')}>
-              ← Back to Home
+            <FaArrowLeftLong /> Back to Home
             </button>
           </div>
         </div>
