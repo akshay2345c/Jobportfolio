@@ -1,14 +1,7 @@
-import { memo, useCallback } from 'react';
-import { useRoute } from '../context/DataContext';
+import { memo } from 'react';
 import '../styles/Header.css';
 
 function Header() {
-  const { navigate } = useRoute();
-
-  const handleAdminClick = useCallback(() => {
-    navigate('/admin-login');
-  }, [navigate]);
-
   return (
     <header className="header">
       <div className="container">
@@ -22,9 +15,6 @@ function Header() {
             <a href="#projects" className="nav-link">Projects</a>
             <a href="#experience" className="nav-link">Experience</a>
             <a href="#education" className="nav-link">Education</a>
-            <button className="nav-link admin-btn" onClick={handleAdminClick}>
-              Admin
-            </button>
           </nav>
         </div>
       </div>

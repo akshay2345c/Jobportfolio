@@ -1,12 +1,8 @@
 import { lazy, Suspense } from 'react';
-
 import { DataProvider, RouteProvider, useRoute } from './context/DataContext';
-
-import AdminLogin from './admin/AdminLogin';
 import Home from './pages/Home';
 
 const ProjectDetails = lazy(() => import('./components/ProjectDetails'));
-const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
 
 function LoadingFallback() {
   return (
@@ -23,18 +19,6 @@ function AppContent() {
     return (
       <Suspense fallback={<LoadingFallback />}>
         <ProjectDetails />
-      </Suspense>
-    );
-  }
-
-  if (route === '/admin-login') {
-    return <AdminLogin />;
-  }
-
-  if (route === '/admin-panel') {
-    return (
-      <Suspense fallback={<LoadingFallback />}>
-        <AdminDashboard />
       </Suspense>
     );
   }
