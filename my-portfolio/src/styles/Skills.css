@@ -18,6 +18,61 @@
   margin: 0 auto 3rem;
 }
 
+/* Swiper Carousel Styles */
+.skills-swiper {
+  padding: 2rem 0;
+  position: relative;
+}
+
+.swiper-button-prev-skills,
+.swiper-button-next-skills {
+  color: var(--accent-color);
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.swiper-button-prev-skills::after,
+.swiper-button-next-skills::after {
+  font-size: 18px;
+}
+
+.swiper-button-prev-skills {
+  left: 0;
+}
+
+.swiper-button-next-skills {
+  right: 0;
+}
+
+.swiper-button-prev-skills:hover,
+.swiper-button-next-skills:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border-color: var(--accent-color);
+}
+
+.swiper-pagination-bullet {
+  background-color: var(--text-secondary) !important;
+  opacity: 0.6;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--accent-color) !important;
+  opacity: 1;
+}
+
+/* Grid Layout for Mobile */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -36,8 +91,8 @@
 
 .skill-card:hover {
   border-color: var(--accent-color);
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px var(--shadow-color);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px var(--shadow-color);
 }
 
 .skill-name {
@@ -58,6 +113,19 @@
   }
 }
 
+@media (max-width: 992px) {
+  .swiper-button-prev-skills,
+  .swiper-button-next-skills {
+    width: 35px;
+    height: 35px;
+  }
+
+  .swiper-button-prev-skills::after,
+  .swiper-button-next-skills::after {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -71,6 +139,15 @@
   .section-subheading {
     font-size: var(--font-size-base);
     margin-bottom: 2rem;
+  }
+
+  .swiper-button-prev-skills,
+  .swiper-button-next-skills {
+    display: none;
+  }
+
+  .swiper-pagination {
+    display: none;
   }
 }
 

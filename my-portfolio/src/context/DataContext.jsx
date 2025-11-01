@@ -29,6 +29,9 @@ export function RouteProvider({ children }) {
       const id = parseInt(path.split('/')[2]);
       setProjectId(id);
       setRoute('/projects/:id');
+    } else if (path === '/resume') {
+      setRoute('/resume');
+      setProjectId(null);
     } else {
       setRoute(path);
       setProjectId(null);

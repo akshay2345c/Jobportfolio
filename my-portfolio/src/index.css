@@ -42,6 +42,16 @@ body {
   font-size: var(--font-size-base);
 }
 
+main.home {
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  main.home {
+    margin-left: 60px;
+  }
+}
+
 /* Container Styles */
 .container {
   max-width: var(--max-width);

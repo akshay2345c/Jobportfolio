@@ -3,6 +3,7 @@ import { DataProvider, RouteProvider, useRoute } from './context/DataContext';
 import Home from './pages/Home';
 
 const ProjectDetails = lazy(() => import('./components/ProjectDetails'));
+const Resume = lazy(() => import('./pages/Resume'));
 
 function LoadingFallback() {
   return (
@@ -19,6 +20,14 @@ function AppContent() {
     return (
       <Suspense fallback={<LoadingFallback />}>
         <ProjectDetails />
+      </Suspense>
+    );
+  }
+
+  if (route === '/resume') {
+    return (
+      <Suspense fallback={<LoadingFallback />}>
+        <Resume />
       </Suspense>
     );
   }

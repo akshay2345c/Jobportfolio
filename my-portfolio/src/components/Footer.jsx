@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import { useData } from '../context/DataContext';
 import '../styles/Footer.css';
 
@@ -17,32 +18,50 @@ function Footer() {
 
           <div className="contact-info">
             <div className="contact-item">
-              <span className="contact-label">Email:</span>
+              <FaEnvelope className="contact-icon" />
               <a href={`mailto:${profile.email}`} className="contact-link">
                 {profile.email}
               </a>
             </div>
             <div className="contact-item">
-              <span className="contact-label">Phone:</span>
+              <FaPhone className="contact-icon" />
               <a href={`tel:${profile.phone}`} className="contact-link">
                 {profile.phone}
               </a>
             </div>
             <div className="contact-item">
-              <span className="contact-label">Location:</span>
+              <FaMapMarkerAlt className="contact-icon" />
               <span className="contact-text">{profile.location}</span>
             </div>
           </div>
 
           <div className="social-links">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-link">
-              GitHub
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              title="GitHub"
+            >
+              <FaGithub />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
-              LinkedIn
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              title="LinkedIn"
+            >
+              <FaLinkedin />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
-              Twitter
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              title="Twitter"
+            >
+              <FaTwitter />
             </a>
           </div>
         </div>
