@@ -69,7 +69,7 @@ function Header() {
     { icon: FaGraduationCap, label: 'Education', path: '#education' },
     { icon: FaFileAlt, label: 'Resume', path: '/resume' },
   ];
-
+     
   return (
     <>
       {/* Horizontal Navbar (Desktop Only) */}
@@ -81,15 +81,7 @@ function Header() {
                 <img src={profileImage} alt="Akshay Patel" className="profile-image" />
                 
               </div>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="GitHub"
-            >
-              <FaGithub />
-            </a>
+  
               <nav className="nav-menu desktop-nav">
                 {navItems.map((item) => {
                   const Icon = item.icon;
@@ -109,6 +101,15 @@ function Header() {
                     </a>
                   );
                 })}
+                     <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              title="GitHub"
+            >
+              <FaGithub />
+            </a>
               </nav>
             </div>
           </div>
@@ -128,15 +129,7 @@ function Header() {
             >
               {isSidebarOpen ? <FaTimes /> : <FaBars />}
             </button>
-                         <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="GitHub"
-            >
-              <FaGithub />
-            </a>
+        
             <div
               className="mobile-logo"
               onClick={handleLogoClick}
@@ -164,6 +157,15 @@ function Header() {
               onKeyDown={(e) => e.key === 'Enter' && handleLogoClick()}
             >
               <img src={profileImage} alt="Akshay Patel" className="sidebar-profile-image" />
+                                    <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              title="GitHub"
+            >
+              <FaGithub />
+            </a>
             </div>
 
             <nav className="sidebar-menu">
@@ -185,6 +187,7 @@ function Header() {
                   </a>
                 );
               })}
+         
             </nav>
           </aside>
         </>

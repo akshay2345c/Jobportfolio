@@ -53,6 +53,17 @@ export const staticData = {
       endDate: 'Working',
       fullDescription: 'Developed a responsive and feature-rich event marketplace platform using React.js, custom CSS with CSS variables, and minimal Tailwind CSS for efficient styling and layout control. Implemented Redux for streamlined state management and lazy loading to enhance performance and page responsiveness. Integrated Framer Motion for smooth, scroll-based animations that enrich user interaction. Added a Google Calendar integration to simplify event scheduling and tracking, and utilized React Recharts for data visualization and insights. Built an advanced admin panel with interactive graphs, user management, payment control, category management, and blog features to ensure complete operational oversight. Included a scroll-to-top button for improved navigation and performed partial backend development with assistance from AI tools to support data handling and automation. Focused on delivering a dynamic, scalable, and visually appealing user experience through clean, optimized, and maintainable code.',
 
+    },
+        {
+      id: 4,
+      title: 'SendMe',
+      description: 'SendMe is an online vehicle booking platform designed to simplify transport scheduling and management. It offers users a clean, responsive interface to book, track, and manage rides efficiently, built with custom CSS for smooth performance and visual consistency across devices.',
+      image: '../src/assets/images/logo.svg',
+      liveLink: 'https://sendme.thefabaf.com/',
+      startDate: 'Aug 2025',
+      endDate: 'Working',
+      fullDescription: 'This is app based project so website pages are static. so i Developed the static website for SendMe using React.js and custom CSS. Built key pages including Home, Services, About Us, Become Partner, and Contact, integrating Framer Motion for smooth animations, Lottie for engaging animated elements, and Skiper UI for interactive sliders. Focused on responsive design, clean layouts, and an engaging user experience with modern visual transitions.',
+
     }
 
   ],

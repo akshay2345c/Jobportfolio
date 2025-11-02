@@ -107,7 +107,11 @@
     transform: translateY(-20px);
   }
 }
-
+@media (max-width: 810px) and (min-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    width: fit-content;
+  }}
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
@@ -127,9 +131,6 @@
     font-size: var(--font-size-base);
   }
 
-  .hero-buttons {
-    flex-direction: column;
-  }
 
   .hero-buttons .btn {
     width: 100%;
@@ -157,3 +158,8 @@
     max-width: 200px;
   }
 }
+@media (max-width: 400px)  {
+  .hero-buttons {
+    flex-direction: column;
+    width: fit-content;
+  }}

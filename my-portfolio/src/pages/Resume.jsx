@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useRoute } from '../context/DataContext';
 import Header from '../components/Header';
 import ScrollToTop from '../components/ScrollToTop';
-import resumePdf from '../assets/Akshay_resume (2).pdf';
+import resumePdf from '../assets/Akshay_resume.pdf';
 import '../styles/Resume.css';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import { FaDownload } from "react-icons/fa6";

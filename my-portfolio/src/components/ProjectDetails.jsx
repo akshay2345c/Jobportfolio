@@ -1,5 +1,7 @@
 import { useData, useRoute } from '../context/DataContext';
 import '../styles/ProjectDetails.css';
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
+
 
 function ProjectDetails() {
   const { data } = useData();
@@ -27,7 +29,8 @@ function ProjectDetails() {
     <section className="project-details">
       <div className="container">
         <button className="back-button" onClick={() => navigate('/')}>
-          ← Back to Home
+          <MdOutlineKeyboardBackspace />
+ Back to Home
         </button>
 
         <div className="project-details-content">
