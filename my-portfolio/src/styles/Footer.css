@@ -45,7 +45,7 @@
   display: flex;
   gap: 0.75rem;
   align-items: center;
-  flex-wrap: wrap;
+
   justify-content: center;
 }
 
@@ -76,6 +76,7 @@
 .contact-text {
   color: var(--text-secondary);
   font-size: var(--font-size-base);
+  text-align: start;
 }
 
 .social-links {
@@ -159,8 +160,8 @@
   }
 
   .contact-item {
-    flex-direction: column;
-    gap: 0.25rem;
+ 
+    gap: 10px;
   }
 
   .social-links {
@@ -173,4 +174,6 @@
   .footer-bottom {
     font-size: 12px;
   }
+  
+
 }

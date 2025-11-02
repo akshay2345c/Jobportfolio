@@ -98,7 +98,7 @@ function Header() {
                   );
                 })}
                      <a
-              href="https://github.com"
+              href="https://github.com/akshay2345c"
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
@@ -154,7 +154,7 @@ function Header() {
             >
               <img src={profileImage} alt="Akshay Patel" className="sidebar-profile-image" />
               <a
-                href="https://github.com"
+                href="https://github.com/akshay2345c"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"

@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import {   FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import { useData } from '../context/DataContext';
 import '../styles/Footer.css';
 

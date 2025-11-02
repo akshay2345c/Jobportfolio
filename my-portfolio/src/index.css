@@ -255,6 +255,7 @@ a {
   .grid-cols-4 {
     grid-template-columns: 1fr;
   }
+
 }
 
 @media (max-width: 768px) {
