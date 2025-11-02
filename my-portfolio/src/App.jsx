@@ -1,14 +1,16 @@
 import { lazy, Suspense } from 'react';
 import { DataProvider, RouteProvider, useRoute } from './context/DataContext';
-import Home from './pages/Home';
 
+const Home = lazy(() => import('./pages/Home'));
 const ProjectDetails = lazy(() => import('./components/ProjectDetails'));
 const Resume = lazy(() => import('./pages/Resume'));
 
 function LoadingFallback() {
   return (
-    <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ color: 'var(--text-secondary)' }}>Loading...</div>
+    <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--bg-color)' }}>
+      <div style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>
+        <div style={{ fontSize: '18px', fontWeight: '500' }}>Loading...</div>
+      </div>
     </section>
   );
 }
@@ -16,23 +18,17 @@ function LoadingFallback() {
 function AppContent() {
   const { route } = useRoute();
 
-  if (route === '/projects/:id') {
-    return (
-      <Suspense fallback={<LoadingFallback />}>
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      {route === '/projects/:id' ? (
         <ProjectDetails />
-      </Suspense>
-    );
-  }
-
-  if (route === '/resume') {
-    return (
-      <Suspense fallback={<LoadingFallback />}>
+      ) : route === '/resume' ? (
         <Resume />
-      </Suspense>
-    );
-  }
-
-  return <Home />;
+      ) : (
+        <Home />
+      )}
+    </Suspense>
+  );
 }
 
 function App() {

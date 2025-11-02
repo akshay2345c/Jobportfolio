@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from '../components/Header';
 import ScrollToTop from '../components/ScrollToTop';
 import Hero from '../components/Hero';

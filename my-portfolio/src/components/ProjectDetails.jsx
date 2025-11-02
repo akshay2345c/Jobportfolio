@@ -1,7 +1,7 @@
 import { useData, useRoute } from '../context/DataContext';
+import { MdOutlineKeyboardBackspace } from 'react-icons/md';
+import { projectImages } from '../constants/images';
 import '../styles/ProjectDetails.css';
-import { MdOutlineKeyboardBackspace } from "react-icons/md";
-
 
 function ProjectDetails() {
   const { data } = useData();
@@ -43,7 +43,7 @@ function ProjectDetails() {
           </div>
 
           <div className="project-details-image">
-            <img src={project.image} alt={project.title} />
+            <img src={projectImages[project.id]} alt={project.title} loading="lazy" />
           </div>
 
           <div className="project-description-section">

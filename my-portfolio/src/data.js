@@ -1,4 +1,3 @@
-
 export const staticData = {
   profile: {
     name: 'Akshay Patel',
@@ -18,36 +17,33 @@ export const staticData = {
     { id: 7, name: 'Redux', level: 'Intermediate' },
     { id: 8, name: 'Manual Testing', level: 'Intermediate' },
     { id: 9, name: 'Responsive Design', level: 'Advanced' }
-   
+
   ],
   projects: [
     {
       id: 1,
       title: 'XOSportsHub',
       description: 'XOSportsHub is an online platform where sports enthusiasts can explore and trade game-strategies: browse expert playbooks, buy or sell coaching tactics across football, basketball, baseball and soccer, and connect with a community of competitive players.',
-      image: '../src/assets/images/XOsports-hub-logo.png',
       liveLink: 'https://xosportshub.com/',
       startDate: 'May 2025',
       endDate: 'Aug 2025',
       fullDescription: 'Developed a responsive and interactive sports strategy marketplace using React.js, Tailwind CSS, and extensive custom CSS for fine-grained design control. Implemented Redux for efficient global state management and lazy loading for optimized performance. Integrated a custom Lottie-based loader for smooth loading feedback and used Framer Motion to create engaging, scroll-based animations that enhance user experience. Built a secure admin panel with features for page control (blogs, content updates) and user management, including the ability to activate or deactivate users, ensuring streamlined platform administration. Collaborated with designers and backend developers to integrate APIs and ensure seamless functionality. Focused on clean, maintainable code, manual testing, and cross-browser compatibility to deliver a high-quality, user-centric interface.',
-      
+
     },
     {
       id: 2,
       title: 'IIM LMS',
       description: 'IIM LMS is an online learning management platform designed to streamline education through interactive courses, progress tracking, and seamless user experience. It enables students to access learning materials, manage assignments, and track performance in one centralized, user-friendly system.',
-      image: '../src/assets/images/bluelogo.svg',
       liveLink: 'https://iim.thefabaf.com/',
       startDate: 'jun 2025',
       endDate: 'Working',
       fullDescription: 'Developed a fully responsive and interactive learning management system using React.js and custom CSS to deliver a clean, consistent, and user-friendly interface. Implemented Redux for efficient global state management and lazy loading to optimize performance and reduce initial load times. Collaborated closely with designers and backend developers to integrate APIs for course management, authentication, and student progress tracking. Focused on writing clean, maintainable code and performed manual testing to ensure seamless functionality, UI accuracy, and cross-browser compatibility across all devices.',
-  
+
     },
     {
       id: 3,
       title: 'Party Pipeline',
       description: 'Party Pipeline is an online marketplace built to bring events to life with ease. Users can browse a wide variety of vendors — from food trucks and entertainment acts to equipment rentals — all in one place. With a streamlined booking system and purchase-protection guarantee, it empowers customers to plan confidently and vendors to showcase their services seamlessly.',
-      image: '../src/assets/images/party-pipeline-logo.svg',
       liveLink: 'https://party-pipeline.thefabaf.com/',
       startDate: 'Sep 2025',
       endDate: 'Working',
@@ -58,7 +54,6 @@ export const staticData = {
       id: 4,
       title: 'SendMe',
       description: 'SendMe is an online vehicle booking platform designed to simplify transport scheduling and management. It offers users a clean, responsive interface to book, track, and manage rides efficiently, built with custom CSS for smooth performance and visual consistency across devices.',
-      image: '../src/assets/images/logo.svg',
       liveLink: 'https://sendme.thefabaf.com/',
       startDate: 'Aug 2025',
       endDate: 'Working',

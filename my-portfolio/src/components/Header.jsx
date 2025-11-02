@@ -1,9 +1,9 @@
 import { memo, useState, useEffect } from 'react';
 import { useRoute } from '../context/DataContext';
 import { FaHome, FaCode, FaProjectDiagram, FaBriefcase, FaGraduationCap, FaFileAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 import profileImage from '../assets/images/Akshay_photo.jpeg';
 import '../styles/Header.css';
-import { FaGithub } from 'react-icons/fa';
 
 function Header() {
   const { navigate, route } = useRoute();
@@ -22,25 +22,22 @@ function Header() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const scrollToElement = (elementId) => {
+    const element = document.querySelector(elementId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+    }
+  };
+
   const handleNavClick = (path) => {
     if (path.startsWith('#')) {
       if (route === '/resume') {
         navigate('/');
-        setTimeout(() => {
-          const element = document.querySelector(path);
-          if (element) {
-            const offset = 80;
-            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top: elementPosition, behavior: 'smooth' });
-          }
-        }, 100);
+        setTimeout(() => scrollToElement(path), 100);
       } else {
-        const element = document.querySelector(path);
-        if (element) {
-          const offset = 80;
-          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({ top: elementPosition, behavior: 'smooth' });
-        }
+        scrollToElement(path);
       }
     } else {
       navigate(path);
@@ -79,7 +76,6 @@ function Header() {
             <div className="header-content">
               <div className="logo-section" onClick={handleLogoClick} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && handleLogoClick()}>
                 <img src={profileImage} alt="Akshay Patel" className="profile-image" />
-                
               </div>
   
               <nav className="nav-menu desktop-nav">
@@ -157,15 +153,15 @@ function Header() {
               onKeyDown={(e) => e.key === 'Enter' && handleLogoClick()}
             >
               <img src={profileImage} alt="Akshay Patel" className="sidebar-profile-image" />
-                                    <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="GitHub"
-            >
-              <FaGithub />
-            </a>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="GitHub"
+              >
+                <FaGithub />
+              </a>
             </div>
 
             <nav className="sidebar-menu">

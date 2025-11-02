@@ -1,5 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useData, useRoute } from '../context/DataContext';
+import { projectImages } from '../constants/images';
 import '../styles/Projects.css';
 
 function Projects() {
@@ -33,7 +34,7 @@ function Projects() {
               }}
             >
               <div className="project-image">
-                <img src={project.image} alt={project.title} />
+                <img src={projectImages[project.id]} alt={project.title} loading="lazy" />
               </div>
               <div className="project-info">
                 <h3 className="project-title">{project.title}</h3>
